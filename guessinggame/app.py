@@ -1,15 +1,21 @@
 import streamlit as st
 import random
 
+# Load the CSS file
+with open("styles.css") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
 # Title of the app
 st.title("Number Guessing Game")
 
 # Instructions
 st.markdown("""
-Welcome to the Number Guessing Game!  
-- I have selected a random number between 1 and 100.  
-- Can you guess it?  
-""")
+<div style="text-align: center;">
+    Welcome to the Number Guessing Game!  
+    <br>I have selected a random number between 1 and 100.  
+    <br>Can you guess it?  
+</div>
+""", unsafe_allow_html=True)
 
 # Generate a random number and store it in session state
 if "target" not in st.session_state:
@@ -23,9 +29,9 @@ guess = st.number_input("Enter your guess:", min_value=1, max_value=100, step=1,
 if st.button("Check"):
     st.session_state.attempts += 1
     if guess < st.session_state.target:
-        st.warning("guessed number is Too low! Try again.")
+        st.warning("❌ Too low! Try again.")
     elif guess > st.session_state.target:
-        st.warning("guessed number is Too high! Try again.")
+        st.warning("❌ Too high! Try again.")
     else:
         st.success(f"🎉 Congratulations! You guessed the number in {st.session_state.attempts} attempts.")
         # Reset game
@@ -34,5 +40,4 @@ if st.button("Check"):
             st.session_state.attempts = 0
 
 # Footer
-st.markdown("---")
-st.caption("Created with ❤️ using Streamlit")
+st.markdown("<footer>Created with ❤️ using Streamlit</footer>", unsafe_allow_html=True)
