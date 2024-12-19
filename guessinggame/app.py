@@ -23,9 +23,9 @@ guess = st.number_input("Enter your guess:", min_value=1, max_value=100, step=1,
 if st.button("Check"):
     st.session_state.attempts += 1
     if guess < st.session_state.target:
-        st.warning("Too low! Try again.")
+        st.warning("guessed number is Too low! Try again.")
     elif guess > st.session_state.target:
-        st.warning("Too high! Try again.")
+        st.warning("guessed number is Too high! Try again.")
     else:
         st.success(f"🎉 Congratulations! You guessed the number in {st.session_state.attempts} attempts.")
         # Reset game
