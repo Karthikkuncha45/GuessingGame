@@ -2,7 +2,7 @@ import streamlit as st
 import random
 
 # Load the CSS file
-with open("styles.css") as f:
+with open("guessinggame/styles.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # Title of the app
